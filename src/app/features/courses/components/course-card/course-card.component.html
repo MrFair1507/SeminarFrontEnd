@@ -1,1 +1,32 @@
-<p>course-card works!</p>
+<div class="course-card">
+  <div class="course-image">
+    <img [src]="course.imageUrl" [alt]="course.title" />
+    <div class="course-rating">
+      <i class="fa-solid fa-star"></i>
+      <span>{{ course.rating }}</span>
+    </div>
+  </div>
+  <div class="course-content">
+    <h3 class="course-title">{{ course.title }}</h3>
+    <p class="course-instructor">
+      <i class="fa-solid fa-user"></i> {{ course.instructor }}
+    </p>
+    <p class="course-duration">
+      <i class="fa-regular fa-clock"></i> {{ course.duration }}
+    </p>
+    <p class="course-description">{{ course.description | slice:0:100 }}...</p>
+    <div class="course-footer">
+      <div class="course-price">{{ course.price | currency:'VND':'symbol':'1.0-0' }}</div>
+      <div class="course-actions">
+        <a [routerLink]="['/courses', course.id]" class="details-link">
+          Chi tiết
+        </a>
+        <app-button 
+          text="Thêm vào giỏ" 
+          type="primary" 
+          (clicked)="addCourseToCart()">
+        </app-button>
+      </div>
+    </div>
+  </div>
+</div>

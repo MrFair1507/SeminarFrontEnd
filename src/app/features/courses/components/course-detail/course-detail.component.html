@@ -1,1 +1,61 @@
-<p>course-detail works!</p>
+<div class="course-detail" *ngIf="course">
+  <div class="course-header">
+    <h1>{{ course.title }}</h1>
+    <div class="course-meta">
+      <span class="category">{{ course.category }}</span>
+      <span class="rating">
+        <i class="fa-solid fa-star"></i> {{ course.rating }}
+      </span>
+    </div>
+  </div>
+  
+  <div class="course-content">
+    <div class="main-content">
+      <div class="course-image">
+        <img [src]="course.imageUrl" [alt]="course.title" />
+      </div>
+      
+      <div class="course-description">
+        <h2>Mô tả khóa học</h2>
+        <p>{{ course.description }}</p>
+      </div>
+      
+      <div class="course-instructor">
+        <h2>Giảng viên</h2>
+        <div class="instructor-info">
+          <img src="https://placehold.co/60x60" alt="Instructor" />
+          <div class="instructor-details">
+            <h3>{{ course.instructor }}</h3>
+            <p>Giảng viên chuyên nghiệp</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="sidebar-content">
+      <div class="course-purchase">
+        <div class="price">{{ course.price | currency:'VND':'symbol':'1.0-0' }}</div>
+        
+        <div class="quantity-selector">
+          <button (click)="decrementQuantity()">-</button>
+          <span>{{ quantity }}</span>
+          <button (click)="incrementQuantity()">+</button>
+        </div>
+        
+        <app-button 
+          text="Thêm vào giỏ hàng" 
+          type="primary" 
+          (clicked)="addToCart()" 
+          class="add-to-cart-btn">
+        </app-button>
+        
+        <ul class="course-features">
+          <li><i class="fa-regular fa-clock"></i> {{ course.duration }}</li>
+          <li><i class="fa-solid fa-certificate"></i> Chứng chỉ hoàn thành</li>
+          <li><i class="fa-solid fa-wifi"></i> Truy cập trọn đời</li>
+          <li><i class="fa-solid fa-mobile-screen"></i> Học trên di động</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>

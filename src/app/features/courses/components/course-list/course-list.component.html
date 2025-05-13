@@ -1,1 +1,38 @@
-<p>course-list works!</p>
+<div class="course-list-container">
+  <div class="header">
+    <h1>Tất cả khóa học</h1>
+    <div class="filters">
+      <div class="search-bar">
+        <i class="fa-solid fa-search"></i>
+        <input type="text" placeholder="Tìm kiếm khóa học..." />
+      </div>
+      <div class="filter-dropdown">
+        <select>
+          <option value="" selected>Tất cả danh mục</option>
+          <option value="web-dev">Lập trình web</option>
+          <option value="front-end">Front-end</option>
+          <option value="back-end">Back-end</option>
+          <option value="design">Thiết kế</option>
+          <option value="ai">AI & Machine Learning</option>
+        </select>
+      </div>
+      <div class="sort-dropdown">
+        <select>
+          <option value="popular" selected>Phổ biến</option>
+          <option value="newest">Mới nhất</option>
+          <option value="price-asc">Giá tăng dần</option>
+          <option value="price-desc">Giá giảm dần</option>
+        </select>
+      </div>
+    </div>
+  </div>
+  
+  <div class="courses-grid">
+    @for (course of courses; track course.id) {
+      <app-course-card 
+        [course]="course" 
+        (addToCart)="addToCart($event)">
+      </app-course-card>
+    }
+  </div>
+</div>

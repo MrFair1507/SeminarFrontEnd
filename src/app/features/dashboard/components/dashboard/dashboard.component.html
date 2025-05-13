@@ -1,1 +1,19 @@
-<p>dashboard works!</p>
+<!-- src/app/features/dashboard/components/dashboard/dashboard.component.html -->
+<div class="featured-section">
+  <div class="section-header">
+    <h2>Khóa học nổi bật</h2>
+    <a routerLink="/courses" class="view-all">Xem tất cả khóa học</a>
+  </div>
+  
+  <div class="featured-courses">
+    <!-- Kiểm tra xem đang có dữ liệu -->
+    <div *ngIf="featuredCourses.length === 0">Không có khóa học nào được tìm thấy.</div>
+    
+    <div *ngFor="let course of featuredCourses">
+      <app-course-card 
+        [course]="course" 
+        (addToCart)="addToCart($event)">
+      </app-course-card>
+    </div>
+  </div>
+</div>

@@ -1,1 +1,23 @@
-<p>cart-item works!</p>
+<div class="cart-item">
+  <div class="item-image">
+    <img [src]="item.course.imageUrl" [alt]="item.course.title" />
+  </div>
+  <div class="item-details">
+    <h3>{{ item.course.title }}</h3>
+    <p class="instructor">
+      <i class="fa-solid fa-user"></i> {{ item.course.instructor }}
+    </p>
+  </div>
+  <div class="item-quantity">
+    <button (click)="decrementQuantity()">-</button>
+    <input type="number" min="1" [(ngModel)]="item.quantity" (change)="updateQuantity()" />
+    <button (click)="incrementQuantity()">+</button>
+  </div>
+  <div class="item-price">{{ item.course.price | vndCurrency }}</div>
+  <div class="item-total">{{ item.course.price * item.quantity | vndCurrency }}</div>
+  <div class="item-actions">
+    <button class="remove-btn" (click)="removeItem()">
+      <i class="fa-solid fa-trash"></i>
+    </button>
+  </div>
+</div>

@@ -1,1 +1,29 @@
-<p>header works!</p>
+<header class="header">
+    <div class="brand">
+        <button class="toggle-btn" (click)="toggleSidebar()">
+            <i class="fa-solid fa-bars"></i>
+        </button>
+        <a routerLink="/" class="logo">
+            <span>EduSales</span>
+        </a>
+    </div>
+    <div class="search">
+        <div class="search-container">
+            <i class="fa-solid fa-search"></i>
+            <input type="text" placeholder="Tìm kiếm khóa học..." />
+        </div>
+    </div>
+    <div class="actions">
+        <a routerLink="/cart" class="cart-icon">
+            <i class="fa-solid fa-cart-shopping"></i>
+            <span class="badge" *ngIf="cartItemCount > 0">{{ cartItemCount }}</span>
+        </a>
+        <div class="total-price" *ngIf="cartTotal$ | async as total">
+            <span *ngIf="total > 0">{{ total | vndCurrency }}</span>
+        </div>
+        <div class="user-profile">
+            <img src="https://placehold.co/40x40" alt="User Profile" />
+            <span>Người dùng</span>
+        </div>
+    </div>
+</header>

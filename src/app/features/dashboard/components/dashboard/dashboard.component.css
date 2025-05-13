@@ -1,0 +1,198 @@
+.dashboard-container {
+  padding: 1rem 0;
+}
+
+.welcome-section {
+  text-align: center;
+  margin-bottom: 3rem;
+  background: linear-gradient(135deg, #3f51b5, #303f9f);
+  color: white;
+  padding: 3rem;
+  border-radius: 8px;
+}
+
+.welcome-section h1 {
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.welcome-section p {
+  font-size: 1.25rem;
+  opacity: 0.9;
+}
+
+.stats-section {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 3rem;
+}
+
+.stat-card {
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  padding: 1.5rem;
+  text-align: center;
+  transition: transform 0.3s ease;
+}
+
+.stat-card:hover {
+  transform: translateY(-5px);
+}
+
+.stat-card i {
+  font-size: 2.5rem;
+  color: #3f51b5;
+  margin-bottom: 1rem;
+}
+
+.stat-card h2 {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  color: #333;
+}
+
+.stat-card p {
+  color: #666;
+}
+
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+
+.section-header h2 {
+  font-size: 1.5rem;
+  color: #333;
+}
+
+.view-all {
+  font-size: 0.9rem;
+  text-decoration: underline;
+}
+
+.featured-section {
+  margin-bottom: 3rem;
+}
+
+.featured-courses {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1.5rem;
+}
+
+.categories-section {
+  margin-bottom: 3rem;
+}
+
+.categories-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 1.5rem;
+}
+
+.category-card {
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  padding: 1.5rem;
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.category-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.category-card i {
+  font-size: 2rem;
+  color: #3f51b5;
+  margin-bottom: 1rem;
+}
+
+.category-card h3 {
+  font-size: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.category-card p {
+  font-size: 0.85rem;
+  color: #666;
+}
+
+/* Responsive Styles */
+@media screen and (max-width: 1024px) {
+  .course-content {
+    grid-template-columns: 1fr;
+  }
+
+  .cart-content {
+    grid-template-columns: 1fr;
+  }
+
+  .sidebar-content {
+    position: static;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .sidebar {
+    transform: translateX(-100%);
+  }
+
+  .main-container {
+    margin-left: 0;
+  }
+
+  .sidebar-collapsed .sidebar {
+    transform: translateX(0);
+    width: 250px;
+  }
+
+  .sidebar-collapsed .sidebar .logo span,
+  .sidebar-collapsed .sidebar .menu-item span,
+  .sidebar-collapsed .sidebar .user-details {
+    display: block;
+  }
+
+  .cart-items-header,
+  .cart-item {
+    grid-template-columns: 80px 1fr 80px;
+  }
+
+  .quantity-col,
+  .price-col,
+  .actions-col {
+    display: none;
+  }
+
+  .item-price,
+  .item-actions {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .search {
+    display: none;
+  }
+
+  .courses-grid,
+  .featured-courses,
+  .categories-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .welcome-section h1 {
+    font-size: 1.75rem;
+  }
+
+  .welcome-section p {
+    font-size: 1rem;
+  }
+}

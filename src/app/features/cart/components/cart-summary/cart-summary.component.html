@@ -1,1 +1,35 @@
-<p>cart-summary works!</p>
+<div class="cart-summary">
+  <h2>Tóm tắt đơn hàng</h2>
+  <div class="summary-items">
+    <div class="summary-item">
+      <span>Tổng tiền</span>
+      <span class="total-amount">{{ total | currency:'VND':'symbol':'1.0-0' }}</span>
+    </div>
+    <div class="summary-item">
+      <span>Khuyến mãi</span>
+      <span>0 ₫</span>
+    </div>
+    <div class="summary-item total">
+      <span>Thành tiền</span>
+      <span class="grand-total">{{ total | currency:'VND':'symbol':'1.0-0' }}</span>
+    </div>
+  </div>
+  <div class="promo-code">
+    <input type="text" placeholder="Nhập mã giảm giá" />
+    <button>Áp dụng</button>
+  </div>
+  <app-button 
+    text="Thanh toán" 
+    type="primary" 
+    [disabled]="total === 0" 
+    class="checkout-btn">
+  </app-button>
+  <div class="payment-methods">
+    <p>Phương thức thanh toán:</p>
+    <div class="methods">
+      <i class="fa-brands fa-cc-visa"></i>
+      <i class="fa-brands fa-cc-mastercard"></i>
+      <i class="fa-brands fa-paypal"></i>
+    </div>
+  </div>
+</div>
