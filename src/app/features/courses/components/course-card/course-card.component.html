@@ -15,18 +15,22 @@
       <i class="fa-regular fa-clock"></i> {{ course.duration }}
     </p>
     <p class="course-description">{{ course.description | slice:0:100 }}...</p>
-    <div class="course-footer">
-      <div class="course-price">{{ course.price | currency:'VND':'symbol':'1.0-0' }}</div>
-      <div class="course-actions">
-        <a [routerLink]="['/courses', course.id]" class="details-link">
-          Chi tiết
-        </a>
-        <app-button 
-          text="Thêm vào giỏ" 
-          type="primary" 
-          (clicked)="addCourseToCart()">
-        </app-button>
-      </div>
+    
+    <!-- Phần footer nên nằm ngang hàng với course-content, không lồng bên trong -->
+  </div>
+  
+  <!-- Đặt course-footer ở đây, không lồng trong course-content và không tạo course-card mới -->
+  <div class="course-footer">
+    <div class="course-price">{{ course.price | currency:'VND':'symbol':'1.0-0' }}</div>
+    <div class="course-actions" *ngIf="showAddToCart">
+      <a [routerLink]="['/courses', course.id]" class="details-link">
+        Chi tiết
+      </a>
+      <app-button 
+        text="Thêm vào giỏ" 
+        type="primary" 
+        (clicked)="addCourseToCart()">
+      </app-button>
     </div>
   </div>
 </div>

@@ -22,7 +22,8 @@
     text="Thanh toán" 
     type="primary" 
     [disabled]="total === 0" 
-    class="checkout-btn">
+    class="checkout-btn"
+    (clicked)="checkout()">
   </app-button>
   <div class="payment-methods">
     <p>Phương thức thanh toán:</p>

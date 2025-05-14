@@ -25,7 +25,7 @@ export class DashboardComponent implements OnInit {
   ngOnInit(): void {
     this.courseService.getCourses().subscribe(courses => {
       console.log('Courses loaded:', courses); // Thêm log để kiểm tra
-      this.featuredCourses = courses.slice(0, 3);
+      this.featuredCourses = courses;
     });
   }
 

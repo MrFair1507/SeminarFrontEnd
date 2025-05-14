@@ -1,38 +1,45 @@
+<!-- src/app/features/courses/components/course-list/course-list.component.html -->
 <div class="course-list-container">
   <div class="header">
     <h1>Tất cả khóa học</h1>
     <div class="filters">
       <div class="search-bar">
         <i class="fa-solid fa-search"></i>
-        <input type="text" placeholder="Tìm kiếm khóa học..." />
+        <input 
+          type="text" 
+          placeholder="Tìm kiếm khóa học..." 
+          [(ngModel)]="searchTerm"
+          (input)="search()"
+        />
       </div>
       <div class="filter-dropdown">
-        <select>
-          <option value="" selected>Tất cả danh mục</option>
-          <option value="web-dev">Lập trình web</option>
-          <option value="front-end">Front-end</option>
-          <option value="back-end">Back-end</option>
-          <option value="design">Thiết kế</option>
-          <option value="ai">AI & Machine Learning</option>
+        <select [(ngModel)]="selectedCategory" (change)="onCategoryChange()">
+          <option value="">Tất cả danh mục</option>
+          <option *ngFor="let category of categories" [value]="category">{{ category }}</option>
         </select>
       </div>
       <div class="sort-dropdown">
-        <select>
-          <option value="popular" selected>Phổ biến</option>
-          <option value="newest">Mới nhất</option>
-          <option value="price-asc">Giá tăng dần</option>
-          <option value="price-desc">Giá giảm dần</option>
+        <select [(ngModel)]="selectedSort" (change)="onSortChange()">
+          <option *ngFor="let option of sortOptions" [value]="option.value">{{ option.label }}</option>
         </select>
       </div>
     </div>
   </div>
   
-  <div class="courses-grid">
-    @for (course of courses; track course.id) {
-      <app-course-card 
-        [course]="course" 
-        (addToCart)="addToCart($event)">
-      </app-course-card>
-    }
+  <!-- Hiển thị khi không có kết quả -->
+  <div *ngIf="courses.length === 0" class="no-results">
+    <i class="fa-solid fa-search"></i>
+    <h2>Không tìm thấy khóa học</h2>
+    <p>Vui lòng thử lại với từ khóa khác hoặc xem tất cả khóa học.</p>
+    <button class="btn btn-primary" (click)="searchTerm = ''; loadAllCourses()">Xem tất cả khóa học</button>
+  </div>
+  
+  <!-- Hiển thị danh sách khóa học -->
+  <div *ngIf="courses.length > 0" class="courses-grid">
+    <app-course-card 
+      *ngFor="let course of courses" 
+      [course]="course" 
+      (addToCart)="addToCart($event)">
+    </app-course-card>
   </div>
 </div>

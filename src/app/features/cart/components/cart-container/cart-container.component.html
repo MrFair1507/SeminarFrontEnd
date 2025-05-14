@@ -1,48 +1,39 @@
 <div class="cart-container">
   <div class="cart-header">
     <h1>Giỏ hàng của bạn</h1>
-    <app-button 
-      *ngIf="cartItems.length > 0" 
-      text="Xóa tất cả" 
-      type="danger" 
-      (clicked)="clearCart()">
+    <app-button *ngIf="cartItems.length > 0" text="Xóa tất cả" type="danger" (clicked)="clearCart()">
     </app-button>
   </div>
-  
+
   @if (cartItems.length > 0) {
-    <div class="cart-content">
-      <div class="cart-items">
-        <div class="cart-items-header">
-          <div class="product-col">Sản phẩm</div>
-          <div class="quantity-col">Số lượng</div>
-          <div class="price-col">Đơn giá</div>
-          <div class="total-col">Thành tiền</div>
-          <div class="actions-col"></div>
-        </div>
-        
-        @for (item of cartItems; track item.course.id) {
-          <app-cart-item 
-            [item]="item" 
-            (quantityChanged)="updateQuantity($event)" 
-            (removed)="removeItem($event)">
-          </app-cart-item>
-        }
+  <div class="cart-content">
+    <div class="cart-items">
+      <div class="cart-items-header">
+        <div class="product-col">Sản phẩm</div>
+        <div class="quantity-col">Số lượng</div>
+        <div class="price-col">Đơn giá</div>
+        <div class="total-col">Thành tiền</div>
+        <div class="actions-col"></div>
       </div>
-      
-      <div class="cart-sidebar">
-        <app-cart-summary [total]="total"></app-cart-summary>
-      </div>
+
+      @for (item of cartItems; track item.course.id) {
+      <app-cart-item [item]="item" (quantityChanged)="updateQuantity($event)" (removed)="removeItem($event)">
+      </app-cart-item>
+      }
     </div>
+
+    <div class="cart-sidebar">
+      <app-cart-summary [total]="total" [cartItems]="cartItems"></app-cart-summary>
+    </div>
+  </div>
   } @else {
-    <div class="empty-cart">
-      <i class="fa-solid fa-cart-shopping"></i>
-      <h2>Giỏ hàng của bạn đang trống</h2>
-      <p>Hãy thêm khóa học vào giỏ hàng của bạn.</p>
-      <app-button 
-        text="Tiếp tục mua sắm" 
-        type="primary" 
-        routerLink="/courses">
-      </app-button>
-    </div>
+  <div class="empty-cart">
+    <i class="fa-solid fa-cart-shopping"></i>
+    <h2>Giỏ hàng của bạn đang trống</h2>
+    <p>Hãy thêm khóa học vào giỏ hàng của bạn.</p>
+    <app-button text="Tiếp tục mua sắm" type="primary" routerLink="/courses">
+    </app-button>
+  </div>
   }
+
 </div>

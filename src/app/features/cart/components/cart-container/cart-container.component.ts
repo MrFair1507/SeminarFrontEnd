@@ -16,6 +16,7 @@ import { ButtonComponent } from '../../../../shared/components/button/button.com
 export class CartContainerComponent implements OnInit {
   cartItems: CartItem[] = [];
   total: number = 0;
+  
 
   constructor(private cartService: CartService) {}
 

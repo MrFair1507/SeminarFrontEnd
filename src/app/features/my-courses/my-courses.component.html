@@ -1,0 +1,28 @@
+<div class="my-courses-container">
+  <div class="header">
+    <h1>Khóa học của tôi</h1>
+  </div>
+  
+  <div *ngIf="courseDetails.length === 0" class="empty-courses">
+    <i class="fa-solid fa-book"></i>
+    <h2>Bạn chưa có khóa học nào</h2>
+    <p>Hãy mua khóa học để bắt đầu học.</p>
+    <a routerLink="/courses" class="btn btn-primary">Khám phá khóa học</a>
+  </div>
+  
+  <div *ngIf="courseDetails.length > 0" class="courses-grid">
+    <div *ngFor="let course of courseDetails" class="course-item">
+      <app-course-card [course]="course" [showAddToCart]="false"></app-course-card>
+      
+      <div class="course-progress">
+        <div class="progress-bar">
+          <div class="progress" 
+               [style.width.%]="getProgressWidth(course.id)">
+          </div>
+        </div>
+        <span>{{getCompletionStatus(course.id)}}% hoàn thành</span>
+        <a [routerLink]="['/courses', course.id]" class="btn btn-primary">Tiếp tục học</a>
+      </div>
+    </div>
+  </div>
+</div>
